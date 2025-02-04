@@ -2,13 +2,13 @@
 
 #include <iostream>
 #include "Calculator.hpp"
-#include "DisplayGuElder.hpp"
+#include "Display.hpp"
 
 #define Max_digits 8
 
-class CpuGuElder: public Cpu{
+class Cpu: public CpuInterface{
     private:
-    Display* display;
+    DisplayInterface* display;
     Operation Operator = NOOP;
     
     Digit Memory1[Max_digits];
@@ -39,7 +39,7 @@ class CpuGuElder: public Cpu{
     virtual void receiveDigit(Digit);
     virtual void receiveOperation(Operation);
     virtual void receiveControl(Control);
-    virtual void setDisplay(Display&);
+    virtual void setDisplay(DisplayInterface&);
     virtual void calculate();
     virtual double convert_Digit_to_double(Digit*, int, int, bool);
     virtual void Calculate_Extra_Memory();

@@ -1,6 +1,6 @@
-#include "CPUGuElder.hpp"
+#include "CPU.hpp"
 
-void CpuGuElder::receiveDigit(Digit number){
+void Cpu::receiveDigit(Digit number){
     if(number != NO_DIGIT){
         if(this->Operator == NOOP){
             this->Memory1[memory1count] = number; memory1count++;
@@ -11,7 +11,7 @@ void CpuGuElder::receiveDigit(Digit number){
     }
 }
 
-void CpuGuElder::reset_memory1_memory2(){
+void Cpu::reset_memory1_memory2(){
     this->memory1count = 0;
     this->memory2count = 0;
     this->memory1Dot = -1;
@@ -21,7 +21,7 @@ void CpuGuElder::reset_memory1_memory2(){
     this->Operator = NOOP;
 }
 
-void CpuGuElder::receiveOperation(Operation operation){
+void Cpu::receiveOperation(Operation operation){
     if(memory1count == 0 && resultcount > 0){
         for(int i = 0; i < resultcount; i++){
             Memory1[i] = Result[i];
@@ -66,11 +66,11 @@ void CpuGuElder::receiveOperation(Operation operation){
     }
 }
 
-void CpuGuElder::receiveControl(Control control){
+void Cpu::receiveControl(Control control){
     switch(control){
         case ON_CLEAR_ERROR:
             if(this->display == NULL){
-                this->display = new DisplayGuElder();
+                this->display = new Display();
             }
             reset_memory1_memory2();
             this->display->clear();
@@ -110,11 +110,11 @@ void CpuGuElder::receiveControl(Control control){
     }
 }
 
-void CpuGuElder::setDisplay(Display& newDisplay){
+void Cpu::setDisplay(DisplayInterface& newDisplay){
     this->display = &newDisplay;
 }
 
-void CpuGuElder::calculate(){
+void Cpu::calculate(){
 
     memory1double = convert_Digit_to_double(Memory1,memory1count,memory1Dot,memory1negative);
     memory2double = convert_Digit_to_double(Memory2,memory2count,memory2Dot,memory2negative);
@@ -200,7 +200,7 @@ void CpuGuElder::calculate(){
     }
 }
 
-double CpuGuElder::convert_Digit_to_double(Digit* Memory, int count, int memoryDot, bool negative){
+double Cpu::convert_Digit_to_double(Digit* Memory, int count, int memoryDot, bool negative){
     double memorydouble = 0.0;
     double aux = 1.0;
     if(memoryDot != -1){
@@ -222,7 +222,7 @@ double CpuGuElder::convert_Digit_to_double(Digit* Memory, int count, int memoryD
     return memorydouble;
 }
 
-void CpuGuElder::Calculate_Extra_Memory(){
+void Cpu::Calculate_Extra_Memory(){
     int dotpos = 0;
     if(memoryXdouble < 0){this->display->setSignal(NEGATIVE); resultdouble *= -1.0; memoryXnegative = true;}
     int convertInt = (int)memoryXdouble;

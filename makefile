@@ -1,2 +1,2 @@
 compile:
-	g++ main.cpp KeyboardGuElder.cpp KeyGuElder.cpp Console.cpp CPUGuElder.cpp DisplayGuElder.cpp -o main.o
+	g++ main.cpp Keyboard.cpp Key.cpp Console.cpp CPU.cpp Display.cpp -o main.o

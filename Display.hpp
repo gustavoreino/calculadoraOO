@@ -5,7 +5,7 @@
 #include "Calculator.hpp"
 #include "Console.hpp"
 
-class DisplayGuElder : public Display{
+class Display : public DisplayInterface{
     private:
     Console console;
     int digitCount = 0;

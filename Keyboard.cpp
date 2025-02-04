@@ -1,21 +1,21 @@
-#include "KeyboardGuElder.hpp"
+#include "Keyboard.hpp"
 
-void KeyboardGuElder::receiveDigit(Digit digit) {
+void Keyboard::receiveDigit(Digit digit) {
   this->cpu->receiveDigit(digit);
 }
-void KeyboardGuElder::receiveOperation(Operation operation) {
+void Keyboard::receiveOperation(Operation operation) {
   this->cpu->receiveOperation(operation);  
 }
-void KeyboardGuElder::receiveControl(Control control) {
+void Keyboard::receiveControl(Control control) {
   this->cpu->receiveControl(control); 
 }
 
-void KeyboardGuElder::addKey(Key& key) {
+void Keyboard::addKey(KeyInterface& key) {
   this->keys[this->keysCount++] = &key;
   key.setKeyboard(*this);
 }
 
-Key& KeyboardGuElder::findKey(char symbol) {
+KeyInterface& Keyboard::findKey(char symbol) {
   for(int i = 0; i < this->keysCount; i++){
     if(this->keys[i]->getSymbol() == symbol){
       return *this->keys[i];
@@ -25,6 +25,6 @@ Key& KeyboardGuElder::findKey(char symbol) {
   throw "KEY_NOT_FOUND";
 }
 
-void KeyboardGuElder::setCpu(Cpu& cpu) {
+void Keyboard::setCpu(CpuInterface& cpu) {
   this->cpu = &cpu;
 }

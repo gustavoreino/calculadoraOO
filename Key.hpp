@@ -2,9 +2,9 @@
 
 #include "Calculator.hpp"
 
-class KeyGuElder: public Key{
+class Key: public KeyInterface{
     private:
-    Keyboard* keyboard;
+    KeyboardInterface* keyboard;
     char symbol;
     Digit digit;
     Operation operation;
@@ -13,10 +13,10 @@ class KeyGuElder: public Key{
     bool isOperation = false;
     bool isControl = false;
     public:
-    KeyGuElder(char, Digit);
-    KeyGuElder(char, Operation);
-    KeyGuElder(char, Control);
+    Key(char, Digit);
+    Key(char, Operation);
+    Key(char, Control);
     void press();
-    void setKeyboard(Keyboard&);
+    void setKeyboard(KeyboardInterface&);
     char getSymbol();
 };

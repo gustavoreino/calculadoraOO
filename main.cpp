@@ -1,35 +1,35 @@
 #include <iostream>
 using namespace std;
-#include "DisplayGuElder.hpp"
-#include "CPUGuElder.hpp"
-#include "KeyGuElder.hpp"
-#include "KeyboardGuElder.hpp"
+#include "Display.hpp"
+#include "CPU.hpp"
+#include "Key.hpp"
+#include "Keyboard.hpp"
 
 int main(){
-  Keyboard * kb = new KeyboardGuElder();
-  Cpu * cpu = new CpuGuElder();
-  Display * d = new DisplayGuElder();
-  Key * key1 = new KeyGuElder('1',ONE);
-  Key * key2 = new KeyGuElder('2',TWO);
-  Key * key3 = new KeyGuElder('3',THREE);
-  Key * key4 = new KeyGuElder('4',FOUR);
-  Key * key5 = new KeyGuElder('5',FIVE);
-  Key * key6 = new KeyGuElder('6',SIX);
-  Key * key7 = new KeyGuElder('7',SEVEN);
-  Key * key8 = new KeyGuElder('8',EIGHT);
-  Key * key9 = new KeyGuElder('9',NINE);
-  Key * key0 = new KeyGuElder('0',ZERO);
-  Key * keyplus = new KeyGuElder('+',ADDITION);
-  Key * keyminus = new KeyGuElder('-',SUBTRACTION);
-  Key * keytimes = new KeyGuElder('*',MULTIPLICATION);
-  Key * keydivide = new KeyGuElder('/',DIVISION);
-  Key * keyequal = new KeyGuElder('=',EQUAL);
-  Key * keydot = new KeyGuElder('.',DECIMAL_SEPARATOR);
-  Key * keyclear = new KeyGuElder('A',ON_CLEAR_ERROR);
-  Key * keyoff = new KeyGuElder('F',OFF);
-  Key * keymem = new KeyGuElder('M',MEMORY_READ_CLEAR);
-  Key * keymemplus = new KeyGuElder('N',MEMORY_ADDITION);
-  Key * keymemminus = new KeyGuElder('L',MEMORY_SUBTRACTION);
+  KeyboardInterface * kb = new Keyboard();
+  CpuInterface * cpu = new Cpu();
+  DisplayInterface * d = new Display();
+  KeyInterface * key1 = new Key('1',ONE);
+  KeyInterface * key2 = new Key('2',TWO);
+  KeyInterface * key3 = new Key('3',THREE);
+  KeyInterface * key4 = new Key('4',FOUR);
+  KeyInterface * key5 = new Key('5',FIVE);
+  KeyInterface * key6 = new Key('6',SIX);
+  KeyInterface * key7 = new Key('7',SEVEN);
+  KeyInterface * key8 = new Key('8',EIGHT);
+  KeyInterface * key9 = new Key('9',NINE);
+  KeyInterface * key0 = new Key('0',ZERO);
+  KeyInterface * keyplus = new Key('+',ADDITION);
+  KeyInterface * keyminus = new Key('-',SUBTRACTION);
+  KeyInterface * keytimes = new Key('*',MULTIPLICATION);
+  KeyInterface * keydivide = new Key('/',DIVISION);
+  KeyInterface * keyequal = new Key('=',EQUAL);
+  KeyInterface * keydot = new Key('.',DECIMAL_SEPARATOR);
+  KeyInterface * keyclear = new Key('A',ON_CLEAR_ERROR);
+  KeyInterface * keyoff = new Key('F',OFF);
+  KeyInterface * keymem = new Key('M',MEMORY_READ_CLEAR);
+  KeyInterface * keymemplus = new Key('N',MEMORY_ADDITION);
+  KeyInterface * keymemminus = new Key('L',MEMORY_SUBTRACTION);
   kb->addKey(*key1);
   kb->addKey(*key2);
   kb->addKey(*key3);

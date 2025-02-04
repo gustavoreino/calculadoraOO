@@ -1,6 +1,6 @@
-#include "DisplayGuElder.hpp"
+#include "Display.hpp"
 
-void DisplayGuElder::digitShow(Digit digit, int line, bool Dot){
+void Display::digitShow(Digit digit, int line, bool Dot){
     switch (digit){
     case ZERO:
         if(line == 1){std::cout << full;}
@@ -73,7 +73,7 @@ void DisplayGuElder::digitShow(Digit digit, int line, bool Dot){
     }
 }
 
-void DisplayGuElder::signalShow(Signal sign, int line){
+void Display::signalShow(Signal sign, int line){
     if(sign == NEGATIVE){
         if( line != 3 ){std::cout << empty; }else{std::cout << full; }
     } else {
@@ -81,7 +81,7 @@ void DisplayGuElder::signalShow(Signal sign, int line){
     }
 }
 
-void DisplayGuElder::print(){
+void Display::print(){
     this->console.set_cursor(0,0);
     this->console.clear_screen();
     int diff = digitLimit - digitCount;
@@ -109,7 +109,7 @@ void DisplayGuElder::print(){
     }
 }
 
-void DisplayGuElder::addDigit(Digit digit, bool withDot){
+void Display::addDigit(Digit digit, bool withDot){
     if(digit == NO_DIGIT){
         this->Dotpos = digitCount; 
         this->print();
@@ -122,12 +122,12 @@ void DisplayGuElder::addDigit(Digit digit, bool withDot){
     }
 }
 
-void DisplayGuElder::setSignal(Signal sign){
+void Display::setSignal(Signal sign){
     this->signal = sign;
     this->print();
 }
 
-void DisplayGuElder::clear(){
+void Display::clear(){
     digitCount = 0;
     signal = POSITIVE;
     Dotpos = -1;

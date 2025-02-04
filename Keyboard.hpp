@@ -1,18 +1,18 @@
 #pragma once
 #include "Calculator.hpp"
-#include "KeyGuElder.hpp"
+#include "Key.hpp"
 
 #define MAX_KEYS 23
-class KeyboardGuElder: public Keyboard{
+class Keyboard: public KeyboardInterface{
   private:
-    Cpu* cpu;
-    Key* keys[MAX_KEYS];
+    CpuInterface* cpu;
+    KeyInterface* keys[MAX_KEYS];
     unsigned char keysCount = 0;
   public:
     virtual void receiveDigit(Digit);
     virtual void receiveOperation(Operation);
     virtual void receiveControl(Control);
-    virtual void addKey(Key&);
-    virtual Key& findKey(char);
-    virtual void setCpu(Cpu&);
+    virtual void addKey(KeyInterface&);
+    virtual KeyInterface& findKey(char);
+    virtual void setCpu(CpuInterface&);
 };
